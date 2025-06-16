@@ -11,5 +11,13 @@ class Transferencia extends Model
     use HasFactory;
     use HasUuids;
 
-    protected $fillable = ['conta_origem_id', 'conta_destino_id', 'valor'];
+    protected $fillable = [
+        'conta_origem_id',
+        'conta_destino_id',
+        'valor',
+        'descricao',
+        'status',
+        'realizada_em',
+    ];
+
 }

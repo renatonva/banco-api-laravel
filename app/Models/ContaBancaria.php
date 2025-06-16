@@ -11,5 +11,6 @@ class ContaBancaria extends Model
     use HasFactory;
     use HasUuids;
 
-    protected $fillable = ['titular', 'cpf', 'saldo'];
+    protected $fillable = ['nome', 'sobrenome','titular', 'cpf', 'data_nascimento', 'logradouro',
+                          'telefone', 'email', 'saldo'];
 }

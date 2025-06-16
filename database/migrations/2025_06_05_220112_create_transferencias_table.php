@@ -18,6 +18,9 @@ return new class extends Migration
             $table->uuid('conta_origem_id');
             $table->uuid('conta_destino_id');
             $table->decimal('valor', 15, 2);
+            $table->string('descricao')->nullable();
+            $table->enum('status', ['PENDENTE', 'PROCESSADA', 'FALHOU'])->default('PENDENTE');
+            $table->timestamp('realizada_em')->nullable(); 
             $table->timestamps();
         
             $table->foreign('conta_origem_id')
