@@ -17,21 +17,19 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->uuid('conta_origem_id');
             $table->uuid('conta_destino_id');
+            $table->uuid('tipo_transferencia_id');
+            $table->uuid('banco_id');
             $table->decimal('valor', 15, 2);
             $table->string('descricao')->nullable();
             $table->enum('status', ['PENDENTE', 'PROCESSADA', 'FALHOU'])->default('PENDENTE');
             $table->timestamp('realizada_em')->nullable(); 
             $table->timestamps();
-        
-            $table->foreign('conta_origem_id')
-                  ->references('id')->on('conta_bancarias')
-                  ->onDelete('cascade');
-        
-            $table->foreign('conta_destino_id')
-                  ->references('id')->on('conta_bancarias')
-                  ->onDelete('cascade');
+
+            $table->foreign('conta_origem_id')->references('id')->on('conta_bancarias')->onDelete('cascade');
+            $table->foreign('conta_destino_id')->references('id')->on('conta_bancarias')->onDelete('cascade');
+            $table->foreign('tipo_transferencia_id')->references('id')->on('tipo_transferencias')->onDelete('cascade');
+            $table->foreign('banco_id')->references('id')->on('bancos')->onDelete('cascade');
         });
-        
     }
 
     /**

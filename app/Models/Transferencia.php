@@ -14,10 +14,23 @@ class Transferencia extends Model
     protected $fillable = [
         'conta_origem_id',
         'conta_destino_id',
+        'tipo_transferencia_id',
+        'banco_id',
         'valor',
         'descricao',
         'status',
         'realizada_em',
     ];
+
+    public function contaOrigem()
+    {
+        return $this->belongsTo(ContaBancaria::class, 'conta_origem_id');
+    }
+
+    public function contaDestino()
+    {
+        return $this->belongsTo(ContaBancaria::class, 'conta_destino_id');
+    }
+
 
 }

@@ -1,6 +1,6 @@
 FROM php:8.2-fpm
 
-# Instala extensões do sistema e do PHP
+# Instalar extensões do sistema necessárias
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     unzip \
@@ -8,8 +8,8 @@ RUN apt-get update && apt-get install -y \
     curl \
     && docker-php-ext-install pdo pdo_pgsql
 
-# Instalar Composer
+# Instalar o Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Configuração padrão
+# Definir diretório padrão de trabalho
 WORKDIR /var/www
